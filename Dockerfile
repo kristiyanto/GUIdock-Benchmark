@@ -24,9 +24,10 @@ ADD PACKAGE/CyNetworkBMA-1.0.0_1.jar /root/CytoscapeConfiguration/3/apps/install
 # Demo contains Cytoscape session (.cys) and dummy data (.txt) 
 # for Dream4, Yeast, and RNASeq
 ADD DEMO/ /root/DEMO/
+ADD benchmark /root/
 
 # Install required R Packages
-RUN echo 'install.packages(c("Rserve", "igraph"), repos="http://cran.us.r-project.org", dependencies=TRUE)' > /tmp/packages.R \     && Rscript /tmp/packages.R
+RUN echo 'install.packages(c("Rserve", "igraph", "RJSONIO", "httr"), repos="http://cran.us.r-project.org", dependencies=TRUE)' > /tmp/packages.R \     && Rscript /tmp/packages.R
 RUN echo 'source("https://bioconductor.org/biocLite.R")' > /tmp/packages.R  
 RUN echo 'biocLite("networkBMA")' >> /tmp/packages.R \ && Rscript /tmp/packages.R
 
@@ -41,4 +42,4 @@ RUN echo '/root/cytoscape-unix-3.2.1/cytoscape.sh' >> /root/start.sh
 
 
 # Run Script on entrance
-CMD sh /root/start.sh
+CMD sh /root/runCytoscapeTest.sh

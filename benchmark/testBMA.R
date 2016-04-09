@@ -1,15 +1,15 @@
 ## script to test
 
 # adjust this to where cyRestBase directory lives
-cyRestBase <- "/opt";
-source("https://bioconductor.org/biocLite.R")
+cyRestBase <- "/root";
 source(paste(cyRestBase,"cy-rest-R/utility/cytoscape_util.R",sep="/"))
-biocLite("networkBMA")
 
 library(networkBMA)
 library(RJSONIO)
 library(httr)
 library(igraph)
+library("Rserve")
+Rserve()
 data(vignette)
 edges.iBMA <- networkBMA(data = timeSeries[,-(1:2)],nTimePoints = length(unique(timeSeries$time)),prior.prob = reg.prob, known = reg.known,nvar = 50, control = iBMAcontrolLM(),ordering = "bic1+prior", diff100 = FALSE, diff0 = FALSE)
 goodEdges <- edges.iBMA[edges.iBMA$PostProb > .5,]
