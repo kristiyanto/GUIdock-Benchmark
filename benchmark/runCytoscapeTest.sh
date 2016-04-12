@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 START=$(date +%s);
 /root/cytoscape-unix-3.2.1/Cytoscape &
 Rscript /root/testBMA.R
