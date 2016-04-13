@@ -13,9 +13,9 @@ ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 
 # Cytoscape Retrieval
 WORKDIR /root 
-ADD http://chianti.ucsd.edu/cytoscape-3.2.1/cytoscape-3.2.1.tar.gz /root/cytoscape-3.2.1.tar.gz
-RUN tar -zxvf cytoscape-3.2.1.tar.gz 
-RUN rm /root/cytoscape-3.2.1.tar.gz
+ADD http://chianti.ucsd.edu/cytoscape-3.3.0/cytoscape-3.3.0.tar.gz /root/cytoscape-3.3.0.tar.gz
+RUN tar -zxvf cytoscape-3.3.0.tar.gz 
+RUN rm /root/cytoscape-3.3.0.tar.gz
 
 # Install Cytoscape Apps / Plugin
 ADD PACKAGE/CyNetworkBMA-1.0.0_1.jar /root/CytoscapeConfiguration/3/apps/installed/CyNetworkBMA-1.0.0_1.jar
@@ -37,7 +37,7 @@ RUN echo 'Rserve()' >> /root/rserve.R
 
 # Build a Script to start run Rserve and Launch Cytoscape
 RUN echo 'Rscript /root/rserve.R' > /root/start.sh
-RUN echo '/root/cytoscape-unix-3.2.1/cytoscape.sh' >> /root/start.sh
+RUN echo '/root/cytoscape-3.3.0/cytoscape.sh' >> /root/start.sh
 
 
 
