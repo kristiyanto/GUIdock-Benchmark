@@ -2,7 +2,7 @@
 
 # adjust this to where cyRestBase directory lives
 cyRestBase <- "/root";
-source(paste(cyRestBase,"cy-rest-R/utility/cytoscape_util.R",sep="/"))
+source(paste(cyRestBase,"cytoscape_util.R",sep="/"))
 
 library(networkBMA)
 library(RJSONIO)
