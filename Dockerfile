@@ -42,4 +42,4 @@ RUN echo '/root/cytoscape-3.3.0/cytoscape.sh' >> /root/start.sh
 
 
 # Run Script on entrance
-ENTRYPOINT sh /root/runCytoscapeTest.sh
+CMD sh /root/runCytoscapeTest.sh

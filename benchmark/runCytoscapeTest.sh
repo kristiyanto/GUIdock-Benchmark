@@ -6,3 +6,4 @@ Rscript /root/testBMA.R
 END=$(date +%s);
 echo "START TIME:" $START "END TIME:" $END
 echo $((END-START)) | awk '{print "Elapsed Time = " int($1/60)":"int($1%60)}'
+read -n1 -r -p "Program completed. Press any key to quit..." key
