@@ -4,7 +4,7 @@
 #variables
 
 SERVICE=docker
-IMAGE=kristiyanto/guidock
+IMAGE=kristiyanto/guidock:benchmark
 SHAREDFOLDER=$HOME/.guidock/GUIdock-SHARED
 
 #check if docker has been installed
@@ -47,4 +47,4 @@ fi
 xhost +
 mkdir -p $SHAREDFOLDER > /dev/null
 echo "Shared Folder is created:$SHAREDFOLDER"
-sudo docker run -ti -e USERID=$UID -e USER=$USER -e DISPLAY=$DISPLAY -v /var/db:/var/db:Z -v /tmp/.X11-unix:/tmp/.X11-unix -v $SHAREDFOLDER:/root/GUIdock-SHARED -v $HOME/.Xauthority:/home/developer/.Xauthority $IMAGE 
+sudo docker run -ti -e USERID=$UID -e USER=$USER -e DISPLAY=$DISPLAY -v /var/db:/var/db:Z -v /tmp/.X11-unix:/tmp/.X11-unix -v $SHAREDFOLDER:/root/GUIdock-SHARED -v $HOME/.Xauthority:/home/developer/.Xauthority --add-host="localhost:$DockerMachine" --net="bridge" -p 1234:1234 $IMAGE 
